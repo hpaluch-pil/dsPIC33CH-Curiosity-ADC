@@ -1,5 +1,5 @@
 /**
-  Generated main.c file from MPLAB Code Configurator
+ ADC related example for dsPIC33CH on Curiosity board
 
   @Company
     Microchip Technology Inc.
@@ -42,19 +42,42 @@
     TERMS.
 */
 
+// must define instruction clock for Master
+// f_osc = 180 MHz, f_cy = 90 MHz => 90 MIPS
+#define FCY 90000000UL 
+#include <libpic30.h> 
 /**
   Section: Included Files
 */
 #include "mcc_generated_files/system.h"
 #include "mcc_generated_files/tmr1.h"
 #include "mcc_generated_files/pin_manager.h"
+#include "mcc_generated_files/adc1.h"
 
-// Timer handler called with 100 ms period
-void My_TMR0_Handler(void)
+// Timer handler called with 100 ms period - must have this name
+// to override default callback in tmr1.c
+void  TMR1_CallBack(void)
 {
     // LED1 blinking period = 2 * TIMER_PERIOD ms = 200 ms
     RE0_LED1_Toggle();
 }
+
+
+ADC1_CHANNEL channel = AN14_ADC;
+uint16_t lastVal = 0;
+uint16_t minVal  = ~0;
+uint16_t maxVal = 0;
+
+void ADC1_AN14_Handler(uint16_t adcVal)
+{
+    lastVal = adcVal;
+    if (adcVal > maxVal)
+        maxVal = adcVal;
+    if (adcVal < minVal)
+        minVal = adcVal;
+    RB11_GPIO1_Toggle();
+}
+
 
 /*
                          Main application
@@ -64,11 +87,19 @@ int main(void)
     // initialize the device
     SYSTEM_Initialize();
     RE0_LED1_SetLow();
-    TMR1_SetInterruptHandler(My_TMR0_Handler);
+    RB11_GPIO1_SetLow();
+    ADC1_Enable();
+    ADC1_ChannelSelect(channel);
     TMR1_Start();
-
+    ADC1_SetAN14_ADCInterruptHandler(ADC1_AN14_Handler);
+    // AN14 Level Trigger must be enabled
+    ADLVLTRGLbits.LVLEN13 = 1;
+    // enable continuous ADC Triggers
+    ADCON3Lbits.SWLCTRG = 1;
     while (1)
     {
+        
+        __delay_us(1);
         // Add your application code
     }
     return 1; 

@@ -81,7 +81,7 @@
 #pragma config BISTDIS = DISABLED    //Memory BIST Feature Disable->mBIST on reset feature disabled
 
 // FICD
-#pragma config ICS = PGD1    //ICD Communication Channel Select bits->Communicate on PGC1 and PGD1
+#pragma config ICS = PGD2    //ICD Communication Channel Select bits->Communicate on PGC2 and PGD2
 #pragma config JTAGEN = OFF    //JTAG Enable bit->JTAG is disabled
 #pragma config NOBTSWP = OFF    //BOOTSWP instruction disable bit->BOOTSWP instruction is disabled
 
@@ -202,6 +202,7 @@
 #include "clock.h"
 #include "system.h"
 #include "system_types.h"
+#include "adc1.h"
 #include "tmr1.h"
 #include "interrupt_manager.h"
 #include "traps.h"
@@ -211,6 +212,7 @@ void SYSTEM_Initialize(void)
     PIN_MANAGER_Initialize();
     CLOCK_Initialize();
     INTERRUPT_Initialize();
+    ADC1_Initialize();
     TMR1_Initialize();
     INTERRUPT_GlobalEnable();
     SYSTEM_CORCONModeOperatingSet(CORCON_MODE_PORVALUES);

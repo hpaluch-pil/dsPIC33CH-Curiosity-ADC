@@ -30,7 +30,7 @@ Software Requirements:
   - Do NOT use MPLAB X IDE v6.10 - it wil fail to use PKOB (PicKit on-board programmer) on Curiosity
     board!
 
-- MCC Plugin 
+- MCC Plugin 5.1.17
 - DFP: `dsPIC33CH-MP_DFP `v1.12.352` (upgraded from 1.10.223 that is included with MPLAB X IDE v6.00)
 - XC16 `v2.10`
 
@@ -40,5 +40,9 @@ Software Requirements:
 
   - now uses only master core at 180 Mhz / 90 MIPS
   - blinks LED1 with rate 200 ms
+  - ADC input uses AN14/RC2 - put some signal there, limits are:
+    - minimum Voltage: 0V
+    - maximum Voltage: 3.3V (same as Vdd)
+  - GPIO debug output (toggles on each finish of ADC conversion) uses RB11
 
 

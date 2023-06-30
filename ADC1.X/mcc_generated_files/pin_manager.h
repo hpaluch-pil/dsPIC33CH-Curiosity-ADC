@@ -56,6 +56,298 @@
 */
 /**
   @Summary
+    Sets the GPIO pin, RB11, high using LATB11.
+
+  @Description
+    Sets the GPIO pin, RB11, high using LATB11.
+
+  @Preconditions
+    The RB11 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RB11 high (1)
+    RB11_GPIO1_SetHigh();
+    </code>
+
+*/
+#define RB11_GPIO1_SetHigh()          (_LATB11 = 1)
+/**
+  @Summary
+    Sets the GPIO pin, RB11, low using LATB11.
+
+  @Description
+    Sets the GPIO pin, RB11, low using LATB11.
+
+  @Preconditions
+    The RB11 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RB11 low (0)
+    RB11_GPIO1_SetLow();
+    </code>
+
+*/
+#define RB11_GPIO1_SetLow()           (_LATB11 = 0)
+/**
+  @Summary
+    Toggles the GPIO pin, RB11, using LATB11.
+
+  @Description
+    Toggles the GPIO pin, RB11, using LATB11.
+
+  @Preconditions
+    The RB11 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Toggle RB11
+    RB11_GPIO1_Toggle();
+    </code>
+
+*/
+#define RB11_GPIO1_Toggle()           (_LATB11 ^= 1)
+/**
+  @Summary
+    Reads the value of the GPIO pin, RB11.
+
+  @Description
+    Reads the value of the GPIO pin, RB11.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    uint16_t portValue;
+
+    // Read RB11
+    postValue = RB11_GPIO1_GetValue();
+    </code>
+
+*/
+#define RB11_GPIO1_GetValue()         _RB11
+/**
+  @Summary
+    Configures the GPIO pin, RB11, as an input.
+
+  @Description
+    Configures the GPIO pin, RB11, as an input.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RB11 as an input
+    RB11_GPIO1_SetDigitalInput();
+    </code>
+
+*/
+#define RB11_GPIO1_SetDigitalInput()  (_TRISB11 = 1)
+/**
+  @Summary
+    Configures the GPIO pin, RB11, as an output.
+
+  @Description
+    Configures the GPIO pin, RB11, as an output.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RB11 as an output
+    RB11_GPIO1_SetDigitalOutput();
+    </code>
+
+*/
+#define RB11_GPIO1_SetDigitalOutput() (_TRISB11 = 0)
+/**
+  @Summary
+    Sets the GPIO pin, RC2, high using LATC2.
+
+  @Description
+    Sets the GPIO pin, RC2, high using LATC2.
+
+  @Preconditions
+    The RC2 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RC2 high (1)
+    AN14_ADC_SetHigh();
+    </code>
+
+*/
+#define AN14_ADC_SetHigh()          (_LATC2 = 1)
+/**
+  @Summary
+    Sets the GPIO pin, RC2, low using LATC2.
+
+  @Description
+    Sets the GPIO pin, RC2, low using LATC2.
+
+  @Preconditions
+    The RC2 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RC2 low (0)
+    AN14_ADC_SetLow();
+    </code>
+
+*/
+#define AN14_ADC_SetLow()           (_LATC2 = 0)
+/**
+  @Summary
+    Toggles the GPIO pin, RC2, using LATC2.
+
+  @Description
+    Toggles the GPIO pin, RC2, using LATC2.
+
+  @Preconditions
+    The RC2 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Toggle RC2
+    AN14_ADC_Toggle();
+    </code>
+
+*/
+#define AN14_ADC_Toggle()           (_LATC2 ^= 1)
+/**
+  @Summary
+    Reads the value of the GPIO pin, RC2.
+
+  @Description
+    Reads the value of the GPIO pin, RC2.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    uint16_t portValue;
+
+    // Read RC2
+    postValue = AN14_ADC_GetValue();
+    </code>
+
+*/
+#define AN14_ADC_GetValue()         _RC2
+/**
+  @Summary
+    Configures the GPIO pin, RC2, as an input.
+
+  @Description
+    Configures the GPIO pin, RC2, as an input.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RC2 as an input
+    AN14_ADC_SetDigitalInput();
+    </code>
+
+*/
+#define AN14_ADC_SetDigitalInput()  (_TRISC2 = 1)
+/**
+  @Summary
+    Configures the GPIO pin, RC2, as an output.
+
+  @Description
+    Configures the GPIO pin, RC2, as an output.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RC2 as an output
+    AN14_ADC_SetDigitalOutput();
+    </code>
+
+*/
+#define AN14_ADC_SetDigitalOutput() (_TRISC2 = 0)
+/**
+  @Summary
     Sets the GPIO pin, RE0, high using LATE0.
 
   @Description
