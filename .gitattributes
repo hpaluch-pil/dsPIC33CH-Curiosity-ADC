@@ -1,0 +1,10 @@
+# MPLAB files that use Unix EOL
+*.mc3 text eol=lf
+Makefile text eol=lf
+*.mk text eol=lf
+
+# use Unix LF even for git files
+*.md text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+
