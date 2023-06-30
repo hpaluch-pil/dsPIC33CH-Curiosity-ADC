@@ -6296,7 +6296,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="ADC1" registerAlias="ADTRIG3H"/>
-         <value>2</value>
+         <value>1</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="ADC1" registerAlias="ADTRIG3L"/>
@@ -7988,7 +7988,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="ADC1" registerAlias="ADTRIG3H" settingAlias="TRGSRC14"/>
-         <value>Level Software Trigger</value>
+         <value>Common Software Trigger</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="ADC1" registerAlias="ADTRIG3H" settingAlias="TRGSRC15"/>
@@ -24918,7 +24918,7 @@
    <generatedFileHashHistoryMap class="java.util.HashMap">
       <entry>
          <file>mcc_generated_files\mcc.h</file>
-         <hash>1651822f6a11a6d2302e1721c8d2fbd63fd007bf733e61e73e58e2b7ca9b1b79</hash>
+         <hash>b4a4fca1a5c26e3aeb60dc4dd12fccf39cd33a25a2432963119a9b1e0d51037c</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\interrupt_manager.h</file>
@@ -24937,12 +24937,12 @@
          <hash>68c001f18ff557f97f29e3fbc5154a5e047f916c0caa3e4661d443bfd86af81f</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\adc1.c</file>
-         <hash>2f5e7debc399c824100d3e7491eac7750f9dc6b27d75d71c7269b95aa696bda2</hash>
-      </entry>
-      <entry>
          <file>main.c</file>
          <hash>84aaf879f6bfb2bbb83b7336cd4d1093d74b2f933a4fbe7ea46ba57ca44eaaba</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\adc1.c</file>
+         <hash>b295c8f8deb1ac3ae481223a167840b3cb82ba74894d891958da010e98e398ef</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\pin_manager.h</file>
@@ -24970,7 +24970,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\system.c</file>
-         <hash>83f150bf6b700d0b598b2666b0ab38e284f811577dc819d96caf86dfad90dd22</hash>
+         <hash>2b5e212011be5d09820d740c4d3d2e63ac202e5c3b160f515d6eefe03bfbe154</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\traps.c</file>
@@ -24994,7 +24994,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\interrupt_manager.c</file>
-         <hash>00b015884949b78544e7941bdb6b7cdb29a4ce0035cabac1cf957b4ed49b15b0</hash>
+         <hash>aedc06a64e4b9ebd81a8d3eaee750503b0f39be74b97ba6b094e22d4e480817d</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\reset.h</file>

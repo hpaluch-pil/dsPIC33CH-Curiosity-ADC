@@ -68,14 +68,21 @@ uint16_t lastVal = 0;
 uint16_t minVal  = ~0;
 uint16_t maxVal = 0;
 
-void ADC1_AN14_Handler(uint16_t adcVal)
+// ovverides interrupt elsewhere
+void __attribute__ ( ( __interrupt__ , auto_psv) ) _ADCAN14Interrupt ( void )
 {
-    lastVal = adcVal;
+    uint16_t adcVal= ADCBUF14;
+    
     if (adcVal > maxVal)
         maxVal = adcVal;
     if (adcVal < minVal)
         minVal = adcVal;
     RB11_GPIO1_Toggle();
+
+    //clear the AN14_ADC interrupt flag
+    IFS6bits.ADCAN14IF = 0;
+    // starts another conversion, should be after IF flag clearing....
+    ADC1_SoftwareTriggerEnable();
 }
 
 
@@ -91,14 +98,10 @@ int main(void)
     ADC1_Enable();
     ADC1_ChannelSelect(channel);
     TMR1_Start();
-    ADC1_SetAN14_ADCInterruptHandler(ADC1_AN14_Handler);
-    // AN14 Level Trigger must be enabled
-    ADLVLTRGLbits.LVLEN13 = 1;
-    // enable continuous ADC Triggers
-    ADCON3Lbits.SWLCTRG = 1;
+    // will call interrupt on completion...
+    ADC1_SoftwareTriggerEnable();
     while (1)
     {
-        
         __delay_us(1);
         // Add your application code
     }

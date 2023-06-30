@@ -202,8 +202,8 @@ void ADC1_Initialize (void)
     ADTRIG2H = 0x00;
     //TRGSRC13 None; TRGSRC12 None; 
     ADTRIG3L = 0x00;
-    //TRGSRC15 None; TRGSRC14 Level Software Trigger; 
-    ADTRIG3H = 0x02;
+    //TRGSRC15 None; TRGSRC14 Common Software Trigger; 
+    ADTRIG3H = 0x01;
     //TRGSRC17 Common Software Trigger; TRGSRC16 Common Software Trigger; 
     ADTRIG4L = 0x101;
     //TRGSRC19 Common Software Trigger; TRGSRC18 Common Software Trigger; 
