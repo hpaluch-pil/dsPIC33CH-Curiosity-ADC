@@ -45,5 +45,6 @@ Software Requirements:
     - maximum Voltage: 3.3V (same as Vdd)
   - GPIO debug output (toggles on each finish of ADC conversion) uses RB11
   - currently 1 ADC conversion takes 1.69 µs
+  - UART, output ADC stats every second, set: 115200 bps, 8 bit data, 1 stop, no parity, no flow
 
 

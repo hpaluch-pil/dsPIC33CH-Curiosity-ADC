@@ -8,8 +8,17 @@
     main.c
 
   @Summary
-    This is the generated main.c using PIC24 / dsPIC33 / PIC32MM MCUs.
-
+    ADC1 example for dsPIC33CH.
+    Used peripherals:
+    - AN14/RC2 - ADC input. Allowed voltage: 0V to 3.3V (=Vdd)
+    - RB11 GPIO Out - toggled on every ADC interrupt (finished acquisition)
+    - RE0 LED1 - toggled every 100 ms - so blinks with 200 ms rate.
+    - RC11 TXB - UART (115200 bps, 8 data, 1 stop, no parity, no flow)
+               - ADC stats every 1s
+    Notes:
+    - currently 1 ADC conversion takes 1.69 µs
+  
+  
   @Description
     This source file provides main entry point for system initialization and application code development.
     Generation Information :
@@ -45,7 +54,8 @@
 // must define instruction clock for Master
 // f_osc = 180 MHz, f_cy = 90 MHz => 90 MIPS
 #define FCY 90000000UL 
-#include <libpic30.h> 
+#include <libpic30.h> // __delay_xx())
+#include <stdio.h> // printf(3)
 /**
   Section: Included Files
 */
@@ -54,22 +64,29 @@
 #include "mcc_generated_files/pin_manager.h"
 #include "mcc_generated_files/adc1.h"
 
+
+#define APP_VERSION 100 // = 1.00
+
+// counter increased every 100ms from interrupt
+volatile uint16_t tmr1_counter = 0;
+
 // Timer handler called with 100 ms period - must have this name
 // to override default callback in tmr1.c
 void  TMR1_CallBack(void)
 {
+    tmr1_counter++;
     // LED1 blinking period = 2 * TIMER_PERIOD ms = 200 ms
     RE0_LED1_Toggle();
 }
 
 
 ADC1_CHANNEL channel = AN14_ADC;
-uint16_t lastVal = 0;
-uint16_t minVal  = ~0;
-uint16_t maxVal = 0;
+volatile uint16_t lastVal = 0;
+volatile uint16_t minVal  = ~0;
+volatile uint16_t maxVal = 0;
 
-// ovverides interrupt elsewhere
-void __attribute__ ( ( __interrupt__ , auto_psv) ) _ADCAN14Interrupt ( void )
+// overrides interrupt elsewhere
+void __attribute__ (( __interrupt__ , auto_psv)) _ADCAN14Interrupt ( void )
 {
     uint16_t adcVal= ADCBUF14;
     
@@ -100,10 +117,17 @@ int main(void)
     TMR1_Start();
     // will call interrupt on completion...
     ADC1_SoftwareTriggerEnable();
+    printf("MASTER: at %s() %s:%d v%d.02%d started\r\n",
+            __func__,__FILE__,__LINE__,APP_VERSION/100,APP_VERSION%100);
     while (1)
     {
-        __delay_us(1);
-        // Add your application code
+        // wait 1s
+        while( tmr1_counter % 10 !=0); /*NOP*/
+        // avoid re-trigger....
+        while( tmr1_counter % 10 ==0); /*NOP*/
+        // print info on sampled ADC value every 1 second...
+        printf("TICK=%u last=%u min=%u max=%u\r\n",
+                tmr1_counter, lastVal, minVal, maxVal);
     }
     return 1; 
 }
