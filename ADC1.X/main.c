@@ -11,6 +11,7 @@
     ADC1 example for dsPIC33CH.
     Used peripherals:
     - AN14/RC2 - ADC input. Allowed voltage: 0V to 3.3V (=Vdd)
+    - DACOUT1/RB2 - DAC output (playback of ADC input)
     - RB11 GPIO Out - toggled on every ADC interrupt (finished acquisition)
     - RB12 OCM1 (Output Compare) output in Toggle mode.
     - RE0 LED1 - toggled every 100 ms - so blinks with 200 ms rate.
@@ -65,7 +66,7 @@
 #include "mcc_generated_files/tmr1.h"
 #include "mcc_generated_files/pin_manager.h"
 #include "mcc_generated_files/adc1.h"
-
+#include "mcc_generated_files/cmp1.h"
 
 #define APP_VERSION 103 // = 1.03
 
@@ -86,6 +87,8 @@ ADC1_CHANNEL channel = AN14_ADC;
 volatile uint16_t lastVal = 0;
 volatile uint16_t minVal  = ~0;
 volatile uint16_t maxVal = 0;
+// DAC val:  Valid values are from 205 to 3890.
+volatile uint16_t dacVal = 205;
 
 void reset_stats()
 {
@@ -102,7 +105,10 @@ void ADC1_AN14_ADC_CallBack( uint16_t adcVal )
         maxVal = adcVal;
     if (adcVal < minVal)
         minVal = adcVal;
-    RB11_GPIO1_Toggle();    
+    RB11_GPIO1_Toggle();
+    // TODO: Valid values are from 205 to 3890.
+    dacVal =  205UL +  (uint32_t)adcVal * (3890 - 205) / 4096;
+    CMP1_SetDACDataHighValue(dacVal);
 }
 
 
@@ -123,6 +129,8 @@ int main(void)
             __func__,__FILE__,__LINE__,APP_VERSION/100,APP_VERSION%100);
     // will call interrupt on completion...
     ADC1_SoftwareTriggerEnable();
+    CMP1_SetDACDataLowValue(3890);
+    CMP1_EnableDACOutput();
     while (1)
     {
         uint32_t last_1000,min_1000,max_1000;
@@ -136,10 +144,11 @@ int main(void)
         last_1000 = 3300UL * lastVal / 4096;
         min_1000  = 3300UL * minVal / 4096;
         max_1000  = 3300UL * maxVal / 4096;
-        printf("TICK=%u last=%u (%lu.%03lu V) min=%u (%lu.%03lu V) max=%u (%lu.%03lu V) \r\n",
+        printf("TICK=%u last=%u (%lu.%03lu V) min=%u (%lu.%03lu V) max=%u (%lu.%03lu V) dac=%u \r\n",
                 tmr1_counter, lastVal, last_1000/1000,last_1000%1000,
                 minVal,min_1000/1000,min_1000%1000,
-                maxVal,max_1000/1000,max_1000%1000);
+                maxVal,max_1000/1000,max_1000%1000,
+                dacVal);
         reset_stats();
     }
     return 1; 

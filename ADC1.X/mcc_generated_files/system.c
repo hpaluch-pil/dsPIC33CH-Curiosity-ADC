@@ -202,10 +202,11 @@
 #include "clock.h"
 #include "system.h"
 #include "system_types.h"
+#include "cmp1.h"
 #include "tmr1.h"
+#include "adc1.h"
 #include "uart1.h"
 #include "sccp1_compare.h"
-#include "adc1.h"
 #include "interrupt_manager.h"
 #include "traps.h"
 
@@ -215,6 +216,7 @@ void SYSTEM_Initialize(void)
     CLOCK_Initialize();
     INTERRUPT_Initialize();
     SCCP1_COMPARE_Initialize();
+    CMP1_Initialize();
     UART1_Initialize();
     ADC1_Initialize();
     TMR1_Initialize();

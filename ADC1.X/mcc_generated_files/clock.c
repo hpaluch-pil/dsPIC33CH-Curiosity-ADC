@@ -56,10 +56,10 @@ void CLOCK_Initialize(void)
     OSCTUN = 0x00;
     // POST1DIV 1:4; VCODIV FVCO/4; POST2DIV 1:1; 
     PLLDIV = 0x41;
-    // APLLEN disabled; FRCSEL Primary Oscillator; APLLPRE 1:1; 
-    ACLKCON1 = 0x01;
-    // APLLFBDIV 150; 
-    APLLFBD1 = 0x96;
+    // APLLEN enabled; FRCSEL Primary Oscillator; APLLPRE 1:1; 
+    ACLKCON1 = 0x8001;
+    // APLLFBDIV 200; 
+    APLLFBD1 = 0xC8;
     // APOST1DIV 1:4; APOST2DIV 1:1; AVCODIV FVCO/4; 
     APLLDIV1 = 0x41;
     // CANCLKEN disabled; CANCLKSEL No Clock Selected; CANCLKDIV Divide by 1; 
