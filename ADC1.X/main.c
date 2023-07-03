@@ -12,6 +12,7 @@
     Used peripherals:
     - AN14/RC2 - ADC input. Allowed voltage: 0V to 3.3V (=Vdd)
     - RB11 GPIO Out - toggled on every ADC interrupt (finished acquisition)
+    - RB12 OCM1 (Output Compare) output in Toggle mode.
     - RE0 LED1 - toggled every 100 ms - so blinks with 200 ms rate.
     - RE1 LED2 - toggle every 1s from main loop
     - RC11 TXB - UART (115200 bps, 8 data, 1 stop, no parity, no flow)
@@ -66,7 +67,7 @@
 #include "mcc_generated_files/adc1.h"
 
 
-#define APP_VERSION 100 // = 1.00
+#define APP_VERSION 101 // = 1.01
 
 // counter increased every 100ms from interrupt
 volatile uint16_t tmr1_counter = 0;
@@ -86,22 +87,14 @@ volatile uint16_t lastVal = 0;
 volatile uint16_t minVal  = ~0;
 volatile uint16_t maxVal = 0;
 
-// overrides interrupt elsewhere
-void __attribute__ ( ( __interrupt__ , auto_psv) ) _ADCAN14Interrupt ( void )
+// overwrites same "weak" callback in adc1.c
+void ADC1_AN14_ADC_CallBack( uint16_t adcVal )
 {
-    uint16_t adcVal= ADCBUF14;
-    
     if (adcVal > maxVal)
         maxVal = adcVal;
     if (adcVal < minVal)
         minVal = adcVal;
-    RB11_GPIO1_Toggle();
-
-    //clear the AN14_ADC interrupt flag
-    IFS6bits.ADCAN14IF = 0;
-    // starts another conversion, should be after IF flag clearing....
-    //ADC1_SoftwareTriggerEnable();
-    //ADCON3Lbits.SWCTRG = 1;
+    RB11_GPIO1_Toggle();    
 }
 
 
