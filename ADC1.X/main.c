@@ -67,7 +67,7 @@
 #include "mcc_generated_files/adc1.h"
 
 
-#define APP_VERSION 102 // = 1.02
+#define APP_VERSION 103 // = 1.03
 
 // counter increased every 100ms from interrupt
 volatile uint16_t tmr1_counter = 0;
@@ -119,12 +119,13 @@ int main(void)
     ADC1_Enable();
     ADC1_ChannelSelect(channel);
     TMR1_Start();
-    printf("MASTER: at %s() %s:%d v%d.02%d started\r\n",
+    printf("MASTER: at %s() %s:%d v%d.%02d started\r\n",
             __func__,__FILE__,__LINE__,APP_VERSION/100,APP_VERSION%100);
     // will call interrupt on completion...
     ADC1_SoftwareTriggerEnable();
     while (1)
     {
+        uint32_t last_100,min_100,max_100;
         // ACK on LED2 that while() loop is working properly...
         RE1_LED2_Toggle();
         // wait 1s
@@ -132,8 +133,13 @@ int main(void)
         // avoid re-trigger....
         while( (tmr1_counter % 10) == 0); /*NOP*/
         // print info on sampled ADC value every 1 second...
-        printf("TICK=%u last=%u min=%u max=%u\r\n",
-                tmr1_counter, lastVal, minVal, maxVal);
+        last_100 = 330UL * lastVal / 4096;
+        min_100  = 330UL * minVal / 4096;
+        max_100  = 330UL * maxVal / 4096;
+        printf("TICK=%u last=%u (%lu.%02lu V) min=%u (%lu.%02lu V) max=%u (%lu.%02lu V) \r\n",
+                tmr1_counter, lastVal, last_100/100,last_100%100,
+                minVal,min_100/100,min_100%100,
+                maxVal,max_100/100,max_100%100);
         reset_stats();
     }
     return 1; 
