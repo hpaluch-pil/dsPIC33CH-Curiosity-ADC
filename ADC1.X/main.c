@@ -125,7 +125,7 @@ int main(void)
     ADC1_SoftwareTriggerEnable();
     while (1)
     {
-        uint32_t last_100,min_100,max_100;
+        uint32_t last_1000,min_1000,max_1000;
         // ACK on LED2 that while() loop is working properly...
         RE1_LED2_Toggle();
         // wait 1s
@@ -133,13 +133,13 @@ int main(void)
         // avoid re-trigger....
         while( (tmr1_counter % 10) == 0); /*NOP*/
         // print info on sampled ADC value every 1 second...
-        last_100 = 330UL * lastVal / 4096;
-        min_100  = 330UL * minVal / 4096;
-        max_100  = 330UL * maxVal / 4096;
-        printf("TICK=%u last=%u (%lu.%02lu V) min=%u (%lu.%02lu V) max=%u (%lu.%02lu V) \r\n",
-                tmr1_counter, lastVal, last_100/100,last_100%100,
-                minVal,min_100/100,min_100%100,
-                maxVal,max_100/100,max_100%100);
+        last_1000 = 3300UL * lastVal / 4096;
+        min_1000  = 3300UL * minVal / 4096;
+        max_1000  = 3300UL * maxVal / 4096;
+        printf("TICK=%u last=%u (%lu.%03lu V) min=%u (%lu.%03lu V) max=%u (%lu.%03lu V) \r\n",
+                tmr1_counter, lastVal, last_1000/1000,last_1000%1000,
+                minVal,min_1000/1000,min_1000%1000,
+                maxVal,max_1000/1000,max_1000%1000);
         reset_stats();
     }
     return 1; 
