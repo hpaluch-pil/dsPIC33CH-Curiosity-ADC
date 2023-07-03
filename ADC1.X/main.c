@@ -67,7 +67,7 @@
 #include "mcc_generated_files/adc1.h"
 
 
-#define APP_VERSION 101 // = 1.01
+#define APP_VERSION 102 // = 1.02
 
 // counter increased every 100ms from interrupt
 volatile uint16_t tmr1_counter = 0;
@@ -87,9 +87,17 @@ volatile uint16_t lastVal = 0;
 volatile uint16_t minVal  = ~0;
 volatile uint16_t maxVal = 0;
 
+void reset_stats()
+{
+    maxVal = 0;
+    minVal = ~0;
+    lastVal = 0;
+}
+
 // overwrites same "weak" callback in adc1.c
 void ADC1_AN14_ADC_CallBack( uint16_t adcVal )
 {
+    lastVal = adcVal;
     if (adcVal > maxVal)
         maxVal = adcVal;
     if (adcVal < minVal)
@@ -126,6 +134,7 @@ int main(void)
         // print info on sampled ADC value every 1 second...
         printf("TICK=%u last=%u min=%u max=%u\r\n",
                 tmr1_counter, lastVal, minVal, maxVal);
+        reset_stats();
     }
     return 1; 
 }

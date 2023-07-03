@@ -22924,7 +22924,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="SCCP1" name="cmpakey"/>
-         <value>128</value>
+         <value>28</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="SCCP1" name="cmpbkey"/>
@@ -22936,7 +22936,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="SCCP1" name="prlkey"/>
-         <value>256</value>
+         <value>56</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="SCCP1" name="sccpFreq"/>
@@ -23580,11 +23580,11 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="SCCP1" registerAlias="CCPPRL"/>
-         <value>256</value>
+         <value>56</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="SCCP1" registerAlias="CCPRAL"/>
-         <value>128</value>
+         <value>28</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="SCCP1" registerAlias="CCPRBL"/>
@@ -23748,11 +23748,11 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="SCCP1" registerAlias="CCPPRL" settingAlias="PRL"/>
-         <value>256</value>
+         <value>56</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="SCCP1" registerAlias="CCPRAL" settingAlias="CMPA"/>
-         <value>128</value>
+         <value>28</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="SCCP1" registerAlias="CCPRBL" settingAlias="CMPB"/>
@@ -26990,7 +26990,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\system.c</file>
-         <hash>893f31df8c2cb8609e5abca49e211deec90da7896b7fff14df0d891913d947f8</hash>
+         <hash>f96514517354cb9645200456e053c596b0b851073296726d489680d8a8390364</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\clock.h</file>
@@ -27010,19 +27010,19 @@
       </entry>
       <entry>
          <file>mcc_generated_files\sccp1_compare.c</file>
-         <hash>b715431471a82ae1e67f6f722b2f75e014e017ac821a490d21d22886a5b71e5f</hash>
+         <hash>a6b0dc2e88d64c8036b22f583a39adba70571058325cebf803ff7fe36abfa195</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\mcc.h</file>
-         <hash>caa529c9039faa3efa9eca8a589b99c246bdb5184b39a3b5a7694432923c3993</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\reset.c</file>
-         <hash>8207eefe5915dd2c7bd531980b206709fbaa5d3a7c70e10e26aed208db1c2c55</hash>
+         <hash>6b8b66c8e0b68dd49633478cc28e4f168674983bb565b00bae504da13d79bd40</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\uart1.h</file>
          <hash>7e186ea2256513aff817023560c1e2bb744a940016baf8bc200033d1fedbb05b</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\reset.c</file>
+         <hash>8207eefe5915dd2c7bd531980b206709fbaa5d3a7c70e10e26aed208db1c2c55</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\tmr1.h</file>
@@ -27037,12 +27037,12 @@
          <hash>68c001f18ff557f97f29e3fbc5154a5e047f916c0caa3e4661d443bfd86af81f</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\adc1.c</file>
-         <hash>d0c965d7cbcf770579f9290918ce0d5cce8065c4fb967667b5e2e6efd003acb4</hash>
-      </entry>
-      <entry>
          <file>main.c</file>
          <hash>84aaf879f6bfb2bbb83b7336cd4d1093d74b2f933a4fbe7ea46ba57ca44eaaba</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\adc1.c</file>
+         <hash>d0c965d7cbcf770579f9290918ce0d5cce8065c4fb967667b5e2e6efd003acb4</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\pin_manager.h</file>
@@ -27054,7 +27054,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\pin_manager.c</file>
-         <hash>2afcfa0718d88f4801b72aba64ede5768d0e1b3169c6c74c8570ed09fba28265</hash>
+         <hash>40b153a4aabc7f8ec95d2d90a3a14c4976bf3e2ed1695eaa46f2e1bc44a2c75b</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\traps.c</file>
@@ -27070,7 +27070,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\interrupt_manager.c</file>
-         <hash>00b015884949b78544e7941bdb6b7cdb29a4ce0035cabac1cf957b4ed49b15b0</hash>
+         <hash>aedc06a64e4b9ebd81a8d3eaee750503b0f39be74b97ba6b094e22d4e480817d</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\watchdog.h</file>
