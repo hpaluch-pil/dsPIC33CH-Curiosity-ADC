@@ -12220,7 +12220,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="Custom Name RE1"/>
-         <value/>
+         <value>RE1_LED2</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="Custom Name RE10"/>
@@ -12552,7 +12552,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="RE1"/>
-         <value>disabled</value>
+         <value>output</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="RE10"/>
@@ -12940,7 +12940,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="customNameUserSet RE1"/>
-         <value>disabled</value>
+         <value>enabled</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="customNameUserSet RE10"/>
@@ -19624,7 +19624,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="Pin Module" registerAlias="TRISE"/>
-         <value>65534</value>
+         <value>65532</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="Pin Module" registerAlias="ANSELA" settingAlias="ANSELA0"/>
@@ -22668,7 +22668,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="Pin Module" registerAlias="TRISE" settingAlias="TRISE1"/>
-         <value>input</value>
+         <value>output</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="Pin Module" registerAlias="TRISE" settingAlias="TRISE10"/>
@@ -26058,7 +26058,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\system.c</file>
-         <hash>680053ecb99dde89f6a40234adce27b5b82096eb37998d7097b607022fc75bde</hash>
+         <hash>b6e205f8288b05ca829b875c6b0861ce9c088bbd46dabbcac8f3bab982b2164c</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\clock.h</file>
@@ -26074,7 +26074,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\mcc.h</file>
-         <hash>5300432f6ae493904ef16343fdb58ab7d97a06ddfa9eaabac364232a0e9c38a7</hash>
+         <hash>c2a8d4a8deb9ebe9d9c4d543ee736bbc00939f9e971d3db36f80026de76d593e</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\reset.c</file>
@@ -26085,12 +26085,12 @@
          <hash>7e186ea2256513aff817023560c1e2bb744a940016baf8bc200033d1fedbb05b</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\tmr1.h</file>
-         <hash>2fa575dc97145a0c00a5b5025a50e82be1f63609110ffa1858cb0a80af1dac74</hash>
-      </entry>
-      <entry>
          <file>mcc_generated_files\uart1.c</file>
          <hash>2344cb832c55bfd19ab9a78c56716347a10a4ab45a43a0139a0c1b382ff8107b</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\tmr1.h</file>
+         <hash>2fa575dc97145a0c00a5b5025a50e82be1f63609110ffa1858cb0a80af1dac74</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\clock.c</file>
@@ -26106,7 +26106,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\pin_manager.h</file>
-         <hash>d3d9f4a10cce119db0e44e1dfb7ea731528e6e729fedd3210ce18f4da8aab285</hash>
+         <hash>347130b2f1e46c3cf531570974f8f83d5f9ba897a30ef7d921e931ae96a70ab2</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\tmr1.c</file>
@@ -26114,7 +26114,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\pin_manager.c</file>
-         <hash>c227f3496efd09bc104113d2d561dcc53e38039cff0b5dbf92d0d46223f770a3</hash>
+         <hash>4aeeca1a5425918cda9343d47e0b4e4021ebd449d84af4a8c5240b6661cffa0f</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\traps.c</file>

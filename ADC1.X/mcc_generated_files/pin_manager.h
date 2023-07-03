@@ -492,6 +492,152 @@
 
 */
 #define RE0_LED1_SetDigitalOutput() (_TRISE0 = 0)
+/**
+  @Summary
+    Sets the GPIO pin, RE1, high using LATE1.
+
+  @Description
+    Sets the GPIO pin, RE1, high using LATE1.
+
+  @Preconditions
+    The RE1 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RE1 high (1)
+    RE1_LED2_SetHigh();
+    </code>
+
+*/
+#define RE1_LED2_SetHigh()          (_LATE1 = 1)
+/**
+  @Summary
+    Sets the GPIO pin, RE1, low using LATE1.
+
+  @Description
+    Sets the GPIO pin, RE1, low using LATE1.
+
+  @Preconditions
+    The RE1 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RE1 low (0)
+    RE1_LED2_SetLow();
+    </code>
+
+*/
+#define RE1_LED2_SetLow()           (_LATE1 = 0)
+/**
+  @Summary
+    Toggles the GPIO pin, RE1, using LATE1.
+
+  @Description
+    Toggles the GPIO pin, RE1, using LATE1.
+
+  @Preconditions
+    The RE1 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Toggle RE1
+    RE1_LED2_Toggle();
+    </code>
+
+*/
+#define RE1_LED2_Toggle()           (_LATE1 ^= 1)
+/**
+  @Summary
+    Reads the value of the GPIO pin, RE1.
+
+  @Description
+    Reads the value of the GPIO pin, RE1.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    uint16_t portValue;
+
+    // Read RE1
+    postValue = RE1_LED2_GetValue();
+    </code>
+
+*/
+#define RE1_LED2_GetValue()         _RE1
+/**
+  @Summary
+    Configures the GPIO pin, RE1, as an input.
+
+  @Description
+    Configures the GPIO pin, RE1, as an input.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RE1 as an input
+    RE1_LED2_SetDigitalInput();
+    </code>
+
+*/
+#define RE1_LED2_SetDigitalInput()  (_TRISE1 = 1)
+/**
+  @Summary
+    Configures the GPIO pin, RE1, as an output.
+
+  @Description
+    Configures the GPIO pin, RE1, as an output.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RE1 as an output
+    RE1_LED2_SetDigitalOutput();
+    </code>
+
+*/
+#define RE1_LED2_SetDigitalOutput() (_TRISE1 = 0)
 
 /**
     Section: Function Prototypes

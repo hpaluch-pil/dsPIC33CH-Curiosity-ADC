@@ -39,7 +39,8 @@ Software Requirements:
 * [ADC1.x](ADC1.x) - testing ADC ... TODO
 
   - now uses only master core at 180 Mhz / 90 MIPS
-  - blinks LED1 with rate 200 ms
+  - toggle LED1 with rate 100 ms from TMR1 interrupt
+  - toggle LED2 from main loop with 1s rate.
   - ADC input uses AN14/RC2 - put some signal there, limits are:
     - minimum Voltage: 0V
     - maximum Voltage: 3.3V (same as Vdd)

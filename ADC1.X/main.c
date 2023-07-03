@@ -13,6 +13,7 @@
     - AN14/RC2 - ADC input. Allowed voltage: 0V to 3.3V (=Vdd)
     - RB11 GPIO Out - toggled on every ADC interrupt (finished acquisition)
     - RE0 LED1 - toggled every 100 ms - so blinks with 200 ms rate.
+    - RE1 LED2 - toggle every 1s from main loop
     - RC11 TXB - UART (115200 bps, 8 data, 1 stop, no parity, no flow)
                - ADC stats every 1s
     Notes:
@@ -86,7 +87,7 @@ volatile uint16_t minVal  = ~0;
 volatile uint16_t maxVal = 0;
 
 // overrides interrupt elsewhere
-void __attribute__ (( __interrupt__ , auto_psv)) _ADCAN14Interrupt ( void )
+void __attribute__ ( ( __interrupt__ , auto_psv) ) _ADCAN14Interrupt ( void )
 {
     uint16_t adcVal= ADCBUF14;
     
@@ -99,7 +100,8 @@ void __attribute__ (( __interrupt__ , auto_psv)) _ADCAN14Interrupt ( void )
     //clear the AN14_ADC interrupt flag
     IFS6bits.ADCAN14IF = 0;
     // starts another conversion, should be after IF flag clearing....
-    ADC1_SoftwareTriggerEnable();
+    //ADC1_SoftwareTriggerEnable();
+    //ADCON3Lbits.SWCTRG = 1;
 }
 
 
@@ -111,20 +113,23 @@ int main(void)
     // initialize the device
     SYSTEM_Initialize();
     RE0_LED1_SetLow();
+    RE1_LED2_SetLow();
     RB11_GPIO1_SetLow();
     ADC1_Enable();
     ADC1_ChannelSelect(channel);
     TMR1_Start();
-    // will call interrupt on completion...
-    ADC1_SoftwareTriggerEnable();
     printf("MASTER: at %s() %s:%d v%d.02%d started\r\n",
             __func__,__FILE__,__LINE__,APP_VERSION/100,APP_VERSION%100);
+    // will call interrupt on completion...
+    ADC1_SoftwareTriggerEnable();
     while (1)
     {
+        // ACK on LED2 that while() loop is working properly...
+        RE1_LED2_Toggle();
         // wait 1s
-        while( tmr1_counter % 10 !=0); /*NOP*/
+        while( (tmr1_counter % 10) != 0); /*NOP*/
         // avoid re-trigger....
-        while( tmr1_counter % 10 ==0); /*NOP*/
+        while( (tmr1_counter % 10) == 0); /*NOP*/
         // print info on sampled ADC value every 1 second...
         printf("TICK=%u last=%u min=%u max=%u\r\n",
                 tmr1_counter, lastVal, minVal, maxVal);
