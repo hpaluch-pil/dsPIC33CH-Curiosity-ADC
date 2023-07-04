@@ -1,9 +1,18 @@
 # ADC Demo projects for dsPIC33CH and Curiosity board
 
 Hardware Requirements:
+
 - [dsPIC33CH Curiosity Development Board](https://www.microchip.com/en-us/development-tool/DM330028-2)
-- Micro USB cable (there is no one included with board!)
+- [Digilent Analog Discovery 2](https://digilent.com/shop/analog-discovery-2-100ms-s-usb-oscilloscope-logic-analyzer-and-variable-power-supply/)
+- [BNC Adapter for AD2](https://digilent.com/shop/bnc-adapter-for-analog-discovery/)
+- [Pair of probes](https://digilent.com/shop/bnc-oscilloscope-x1-x10-probes-pair/)
+- 2x Micro USB cable (there is no one included with board!)
+
+  - 1st to connect PKOB (PicKit programmer on board) 
+  - 2nd to see output from UART
+
 - ensure that you downloaded data-sheet from:
+
   - https://ww1.microchip.com/downloads/en/DeviceDoc/DS50002801%20-%20dsPIC33CH%20Curiosity%20Development%20Board%20Users%20Guide.pdf
 - Notice dsPIC type from data-sheet:
   - [dsPIC33CH512MP508](https://www.microchip.com/en-us/product/dsPIC33CH512MP508)
@@ -20,7 +29,6 @@ Here is brief overview of I/O peripherals - excluding DC/DC converter parts:
 | LED1 red | RE0 |
 | LED2 red | RE1 |
 | 10kOhm pot | RA0 |
-
 
 Software Requirements:
 
@@ -48,7 +56,6 @@ You can download Digilent Analog Discovery workspace here:
 
 Required wiring:
 
-
 | Digilent AD2 scope | dsPIC33CH Curiosity board |
 | --- | --- |
 | GND | GND |
@@ -56,6 +63,11 @@ Required wiring:
 | CH1 (Channel 1) | AN14/RC2 |
 | CH2 (Channel 2) | RB11/DAC1 |
 
+Additionally connect UART port to your PC (with micro-USB cable) and
+in Putty set:
+- Serial - your COMx port
+- Speed: 115200
+- format: 8-bit data, no  parity, no control flow
 
 More details:
   - now uses only master core at 180 Mhz / 90 MIPS
