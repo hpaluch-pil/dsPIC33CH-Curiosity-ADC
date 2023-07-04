@@ -58,10 +58,10 @@ void CLOCK_Initialize(void)
     PLLDIV = 0x41;
     // APLLEN enabled; FRCSEL Primary Oscillator; APLLPRE 1:1; 
     ACLKCON1 = 0x8001;
-    // APLLFBDIV 200; 
-    APLLFBD1 = 0xC8;
-    // APOST1DIV 1:4; APOST2DIV 1:1; AVCODIV FVCO/4; 
-    APLLDIV1 = 0x41;
+    // APLLFBDIV 125; 
+    APLLFBD1 = 0x7D;
+    // APOST1DIV 1:2; APOST2DIV 1:1; AVCODIV FVCO/4; 
+    APLLDIV1 = 0x21;
     // CANCLKEN disabled; CANCLKSEL No Clock Selected; CANCLKDIV Divide by 1; 
     CANCLKCON = 0x00;
     // ROEN disabled; ROSWEN disabled; ROSLP disabled; ROSEL FOSC; ROOUT disabled; ROSIDL disabled; 

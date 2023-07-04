@@ -44,6 +44,9 @@ Software Requirements:
   - ADC input uses AN14/RC2 - put some signal there, limits are:
     - minimum Voltage: 0V
     - maximum Voltage: 3.3V (same as Vdd)
+    - ADC is 12-bit, range 0 to 4095 (0xfff)
+  - DAC Output, unfortunately it is allowed to use only range 205 to 3890 instead of 0 to 4095 - so 
+    amplitude is a bit smaller.
   - GPIO debug output (toggles on each finish of ADC conversion) uses RB11
   - currently 1 ADC conversion takes 1.69 µs
   - UART, output ADC stats every second, set: 115200 bps, 8 bit data, 1 stop, no parity, no flow

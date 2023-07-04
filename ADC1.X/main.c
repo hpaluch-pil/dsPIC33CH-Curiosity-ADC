@@ -68,7 +68,7 @@
 #include "mcc_generated_files/adc1.h"
 #include "mcc_generated_files/cmp1.h"
 
-#define APP_VERSION 103 // = 1.03
+#define APP_VERSION 104 // = 1.04
 
 // counter increased every 100ms from interrupt
 volatile uint16_t tmr1_counter = 0;
@@ -131,6 +131,7 @@ int main(void)
     ADC1_SoftwareTriggerEnable();
     CMP1_SetDACDataLowValue(3890);
     CMP1_EnableDACOutput();
+    DAC1CONLbits.DACEN = 1; // sometimes it is not enabled
     while (1)
     {
         uint32_t last_1000,min_1000,max_1000;
