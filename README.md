@@ -36,8 +36,28 @@ Software Requirements:
 
 # Current projects
 
-* [ADC1.x](ADC1.x) - testing ADC ... TODO
+* [ADC1.x](ADC1.x) - real time sampling signal using ADC on AN14/RC2 and outputing
+  it on DAC/RB11)
 
+![ADC DAC Quantization Digilent](assets/adc-dac-quantization.png)
+
+You can download Digilent Analog Discovery workspace here:
+
+- [assets/curiosity-adc.dwf3work](assets/curiosity-adc.dwf3work)
+
+
+Required wiring:
+
+
+| Digilent AD2 scope | dsPIC33CH Curiosity board |
+| --- | --- |
+| GND | GND |
+| W1 (Wavegen 1) | AN14/RC2 |
+| CH1 (Channel 1) | AN14/RC2 |
+| CH2 (Channel 2) | RB11/DAC1 |
+
+
+More details:
   - now uses only master core at 180 Mhz / 90 MIPS
   - toggle LED1 with rate 100 ms from TMR1 interrupt
   - toggle LED2 from main loop with 1s rate.
