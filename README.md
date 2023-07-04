@@ -17,18 +17,13 @@ Hardware Requirements:
 - Notice dsPIC type from data-sheet:
   - [dsPIC33CH512MP508](https://www.microchip.com/en-us/product/dsPIC33CH512MP508)
 
-Here is brief overview of I/O peripherals - excluding DC/DC converter parts:
+Here is brief overview of used onboard I/O peripherals:
 
 | Peripheral | dsPIC33CH pin and/or port |
 | --- | --- |
-| S1 push-button | RE7 |
-| S2 push-button | RE8 |
-| S3 push-button | RE9 |
-| S4 push-button | /MCLR (reset) |
-| R/G/B LED | RB14/RD7/RD5 |
 | LED1 red | RE0 |
 | LED2 red | RE1 |
-| 10kOhm pot | RA0 |
+| UART | `RC10_RXB` |
 
 Software Requirements:
 
@@ -58,10 +53,12 @@ Required wiring:
 
 | Digilent AD2 scope | dsPIC33CH Curiosity board |
 | --- | --- |
-| GND | GND |
-| W1 (Wavegen 1) | AN14/RC2 |
-| CH1 (Channel 1) | AN14/RC2 |
-| CH2 (Channel 2) | RB11/DAC1 |
+| GND | GND - J11 pin 35 |
+| W1 (Wavegen 1) | AN14/RC2  - J12 pin 3 |
+| CH1 (Channel 1) | AN14/RC2 - J12 pin 3 |
+| CH2 (Channel 2) | RB2/DACOUT1 - J12 pin 13 |
+| Digital 0 | RB11/ADC_DONE - J11 pin 24
+| Digital 1 | RB12/CCP1A - J11 pin 22 |
 
 Additionally connect UART port to your PC (with micro-USB cable) and
 in Putty set:
@@ -82,7 +79,8 @@ More details:
     output amplitude is a bit smaller.
   - RB11 toggle on every finished ADC conversion
   - RB12 CCP Timer - toggles on every CCP event, triggers ADC Conversion on TMR overflow
-  - currently 1 ADC conversion takes 40.53 µs (defined by CCP1 period, that triggers ADC conversion)
+  - currently sample rate is 40.53 µs (defined by CCP1 period, that triggers ADC conversion)
+  - currently 1 ADC conversion takes 1.2738 µs (measured on scope - there is possible error)
   - UART, output ADC stats every second, set: 115200 bps, 8 bit data, 1 stop, no parity, no flow
 
 
@@ -91,3 +89,19 @@ Example UART output (every second):
 ```
 TICK=30901 last=3776 (3.177 V) min=201 (0.161 V) max=3958 (3.188 V) dac=3753
 ```
+
+How it works:
+
+- CCP1 Timer triggers ADC Conversion
+- when ADC Conversion is finished it triggers ADC Interrupt
+- in Interrupt we store current ADC value and update statistics and finally
+  we output value to DAC output
+
+Additionally:
+- LED1 blinks when TMR1 interrupt occurs
+- LED2 blinks every second from main loop. It is very important to verify that main
+  program flow works! (There was bug in old version of code, where ADC interrupt immediatelly
+  triggered another interrupt so main code stopped executing!)
+- ADC stats are reported to UART (and reset) every 1s from main program loop.
+
+

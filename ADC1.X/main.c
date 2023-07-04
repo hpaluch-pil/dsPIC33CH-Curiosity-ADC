@@ -19,7 +19,8 @@
     - RC11 TXB - UART (115200 bps, 8 data, 1 stop, no parity, no flow)
                - ADC stats every 1s
     Notes:
-    - currently 1 ADC conversion takes 1.69 µs
+    - our sample rate is defined by CCP1, currently 40.53 us
+    - measured ADC conversion time is 1.2738 us
   
   
   @Description
@@ -87,9 +88,10 @@ ADC1_CHANNEL channel = AN14_ADC;
 volatile uint16_t lastVal = 0;
 volatile uint16_t minVal  = ~0;
 volatile uint16_t maxVal = 0;
-// DAC val:  Valid values are from 205 to 3890.
+// DAC val:  Valid values are from 205 to 3890. (See datasheet DS70005371D)
 volatile uint16_t dacVal = 205;
 
+// resets statistics
 void reset_stats()
 {
     maxVal = 0;
@@ -106,11 +108,10 @@ void ADC1_AN14_ADC_CallBack( uint16_t adcVal )
     if (adcVal < minVal)
         minVal = adcVal;
     RB11_GPIO1_Toggle();
-    // TODO: Valid values are from 205 to 3890.
+    // NOTE: Valid values are from 205 to 3890.
     dacVal =  205UL +  (uint32_t)adcVal * (3890 - 205) / 4096;
     CMP1_SetDACDataHighValue(dacVal);
 }
-
 
 /*
                          Main application
