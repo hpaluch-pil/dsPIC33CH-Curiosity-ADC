@@ -8,7 +8,7 @@ Hardware Requirements:
 - [Pair of probes](https://digilent.com/shop/bnc-oscilloscope-x1-x10-probes-pair/)
 - 2x Micro USB cable (there is no one included with board!)
 
-  - 1st to connect PKOB (PicKit programmer on board) 
+  - 1st to connect PKOB (PICkit on Board) Programmer/Debugger
   - 2nd to see output from UART
 
 - ensure that you downloaded data-sheet from:
@@ -27,17 +27,28 @@ Here is brief overview of used onboard I/O peripherals:
 
 Software Requirements:
 
-- MPLAB X IDE `v6.00`
+- MPLAB X IDE `v6.10`
 
   - Do NOT use MPLAB X IDE v6.05 - it will freeze forever when Master/Slave projects are associated!
-  - Do NOT use MPLAB X IDE v6.10 - it wil fail to use PKOB (PicKit on-board programmer) on Curiosity
-    board!
+  - Plugin Updates REQUIRED for MPLAB X IDE v6.10, otherwise it will not find Curiosity PKOB (PICkit on Board)
+    programmer/debugger
 
-- MCC Plugin 5.1.17
+- MCC Plugin 5.3.7 with PLIB 5.5.7
 - DFP: `dsPIC33CH-MP_DFP `v1.12.352` (upgraded from 1.10.223 that is included with MPLAB X IDE v6.00)
 - XC16 `v2.10`
 
 # Current projects
+
+> IMPORTANT!
+>
+> When using MPLAB X IDE v6.10 - Plugins must be Updated to latest version, otherwise
+> MPLAB will not find PKOB (PICkit on Board) Programmer/Debugger on Curiosity board!
+>
+> To quote https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide Jul 24, 2023:
+>
+> > For MPLAB X IDE v6.10, install the five plug-ins that are suggested in the popup notification.
+> > These plug-ins will enable the MPLAB PICkit 3 and MPLAB ICD 3 In-Circuit Debuggers/Programmers
+> > and onboard debugging for certain evaluation board boards and fix connectivity issues.
 
 * [ADC1.x](ADC1.x) - real time sampling signal using ADC on AN14/RC2 and outputing
   it on DAC/RB11)

@@ -1,4 +1,4 @@
-<config configName="default" projectName="ADC1" configVersion="1.1" device="dsPIC33CH512MP508" deviceLibraryClass="com.microchip.mcc.mcu16.Mcu16PeripheralLibrary" coreVersion="5.4.11">
+<config configName="default" projectName="ADC1" configVersion="1.1" device="dsPIC33CH512MP508" deviceLibraryClass="com.microchip.mcc.mcu16.Mcu16PeripheralLibrary" coreVersion="5.5.7">
    <usedPackages class="java.util.ArrayList"/>
    <usedClasses class="java.util.TreeMap">
       <entry>
@@ -27590,7 +27590,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\system.c</file>
-         <hash>164260c9aae76e15fe54483958803280ee5afe84c7d94710f4591fe524128cef</hash>
+         <hash>35d3d7eacbb72ba59e11f46269bf715c44db912ac27b7b3d8961e6b07570b5c4</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\clock.h</file>
@@ -27614,23 +27614,23 @@
       </entry>
       <entry>
          <file>mcc_generated_files\mcc.h</file>
-         <hash>475e42887c52f21955add0436b1e00a0ab8ea84f449b4da2f65b460565f30bbe</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\uart1.h</file>
-         <hash>7e186ea2256513aff817023560c1e2bb744a940016baf8bc200033d1fedbb05b</hash>
+         <hash>61f873ca13d6e6a606c535bb06ac60b468669dc3523942039841ee958420ddc4</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\reset.c</file>
          <hash>8207eefe5915dd2c7bd531980b206709fbaa5d3a7c70e10e26aed208db1c2c55</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\uart1.c</file>
-         <hash>2344cb832c55bfd19ab9a78c56716347a10a4ab45a43a0139a0c1b382ff8107b</hash>
+         <file>mcc_generated_files\uart1.h</file>
+         <hash>7e186ea2256513aff817023560c1e2bb744a940016baf8bc200033d1fedbb05b</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\tmr1.h</file>
          <hash>2fa575dc97145a0c00a5b5025a50e82be1f63609110ffa1858cb0a80af1dac74</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\uart1.c</file>
+         <hash>2344cb832c55bfd19ab9a78c56716347a10a4ab45a43a0139a0c1b382ff8107b</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\clock.c</file>
@@ -27654,7 +27654,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\pin_manager.c</file>
-         <hash>de9541556777e3cd60e4024c05242dac0382379f37459def9b542cca9111d63d</hash>
+         <hash>e9a4d9933c332566a4d7f60d78e832a058635ca313c8d719ed59bd28760f1e91</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\cmp1.h</file>
@@ -27681,12 +27681,12 @@
          <hash>762e08a0b9820c7e9c8a00f9f1615122c98a8cd68f14bca7fc8e3be4b86728b8</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\reset_types.h</file>
-         <hash>04c4d89cefb0089ff4f56ec0afbf18dd1b3169562326e7ca3cc2a53f7973f223</hash>
-      </entry>
-      <entry>
          <file>mcc_generated_files\cmp1.c</file>
          <hash>722dda453f8112888e3818a63ae5b51722c9985c27b8d8b63e0755ffe8a5eb15</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\reset_types.h</file>
+         <hash>04c4d89cefb0089ff4f56ec0afbf18dd1b3169562326e7ca3cc2a53f7973f223</hash>
       </entry>
    </generatedFileHashHistoryMap>
 </config>
